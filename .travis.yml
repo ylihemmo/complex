@@ -13,3 +13,8 @@ after_success:
   - docker build -t ylihemmo/multi-nginx ./nginx
   - docker build -t ylihemmo/multi-server ./server
   - docker build -t ylihemmo/multi-worker ./worker
+  - echo "$DOCKER_PASS" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push ylihemmo/multi-client
+  - docker push ylihemmo/multi-nginx
+  - docker push ylihemmo/multi-server
+  - docker push ylihemmo/multi-worker
